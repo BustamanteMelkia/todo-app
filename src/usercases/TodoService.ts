@@ -2,7 +2,7 @@ import Todo from "../domain/Todo";
 import { TodoRepository } from "../domain/TodoRepository";
 
 export interface TodoService{
-    GetTodos(): Promise<Todo[]>;
+    getTodos(): Promise<Todo[]>;
 }
 
 export class TodoServiceImpl implements TodoService{
@@ -10,8 +10,8 @@ export class TodoServiceImpl implements TodoService{
     constructor(tr: TodoRepository){
         this.todoRepository = tr;
     }
-    GetTodos(): Promise<Todo[]> {
-        return this.todoRepository.GetTodos();
+    async getTodos(): Promise<Todo[]> {
+        return this.todoRepository.getTodos();
     }
 
 }
