@@ -1,5 +1,5 @@
 import Todo from './Todo';
 
-export interface ItemRepository{
-    getTodos(): Promise<Todo[]>
+export interface TodoRepository{
+    GetTodos(): Promise<Todo[]>
 }
