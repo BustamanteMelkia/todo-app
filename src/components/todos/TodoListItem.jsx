@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import removeIcon from '../../assets/icons/remove.png'
+import { removeTodo } from '../../todos/infrastructure/todos.presenter';
 
 const TodoListItem = ({todo: {id,title, completed, userId}}) => {
     const [state, setState]=useState(false);
-    const toggleState = e=>{
+    const toggleState = _=>{
         setState(!state);
 
     }
-    const handleChange = e=>{
+    const handleRemove = _=>{
+        removeTodo(id)
     }
     return (  
         <li className='todo'>
@@ -26,7 +28,7 @@ const TodoListItem = ({todo: {id,title, completed, userId}}) => {
 
             </div>
             <p className="todo__title">{title}</p>
-            <button className='todo__remove'>
+            <button className='todo__remove' onClick={handleRemove}>
                 <img src={removeIcon} alt="remove todo" />
             </button>
         </li>

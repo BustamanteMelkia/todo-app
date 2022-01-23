@@ -2,7 +2,6 @@
 
 :root{
   --bg-primary: #181820;
-  --color-dark800: #20212c;
   --bg-secondary: #21212B;
   --color-primary: #fff;
   --color-secondary: #FC76A1;
@@ -157,12 +156,14 @@ button{
     width: 30px;
     height: 30px;
   }
+
   .todo{
     padding: 1.2rem .8rem;
   }
   .todo__title{
     font-size: 1rem;
   }
+
   .checkbox{
     width: 24px;
     height: 24px;

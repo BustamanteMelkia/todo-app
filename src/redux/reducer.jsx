@@ -1,4 +1,4 @@
-import todos  from '../infrastructure/todo.reducer';
+import todos  from '../todos/infrastructure/todos.reducer';
 
 const rootReducer = { todos };
 

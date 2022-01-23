@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Header from './components/layout/Header';
 import TodoForm from './components/todos/TodoForm';
 import TodoList from './components/todos/TodoList';
-import { getTodos } from './infrastructure/todo.presenter';
+import { getTodos } from './todos/infrastructure/todos.presenter';
 
 function App() {
   useEffect(()=>{
