@@ -1,7 +1,10 @@
 import { TodoRepository } from "./todos.repository";
 // Redux
 import store from '../../redux/store';
-import {setTodos, removeTodo as removeTodoAction} from './todos.reducer';
+import {setTodos, 
+        removeTodo as removeTodoAction, 
+        addTodo as addTodoAction,
+        toggleStatus as toggleStatusAction } from './todos.reducer';
 
 export const getTodos = async()=>{
     const todosRep = new TodoRepository();
@@ -11,4 +14,10 @@ export const getTodos = async()=>{
 
 export const removeTodo = (todoId) =>{
     store.dispatch(removeTodoAction(todoId));
+}
+export const addTodo = (newTodo) =>{
+    store.dispatch(addTodoAction(newTodo));
+}
+export const toggleStatus = (todoId)=>{
+    store.dispatch(toggleStatusAction(todoId));
 }

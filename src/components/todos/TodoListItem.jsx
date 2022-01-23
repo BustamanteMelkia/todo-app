@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import removeIcon from '../../assets/icons/remove.png'
-import { removeTodo } from '../../todos/infrastructure/todos.presenter';
+import { removeTodo, toggleStatus } from '../../todos/infrastructure/todos.presenter';
 
-const TodoListItem = ({todo: {id,title, completed, userId}}) => {
-    const [state, setState]=useState(false);
-    const toggleState = _=>{
-        setState(!state);
-
+const TodoListItem = ({todo: { id, title, completed}}) => {
+    const handleStatusToggle = _=>{
+        toggleStatus(id);
     }
     const handleRemove = _=>{
         removeTodo(id)
@@ -19,15 +17,18 @@ const TodoListItem = ({todo: {id,title, completed, userId}}) => {
                     <input 
                         type="checkbox" 
                         className='checkbox__input' 
-                        checked={state} 
-                        onChange={toggleState}
-                        id={`check-${id}`}
+                        checked={completed} 
+                        onChange={handleStatusToggle}
+                        id={`todo-${id}`}
                     />
-                    <label className='checkbox__label' htmlFor={`check-${id}`}></label>
+                    <label className='checkbox__label' htmlFor={`todo-${id}`}></label>
                 </div>
 
             </div>
-            <p className="todo__title">{title}</p>
+            <p className={`todo__title ${completed?'todo__title--completed':''}`}>
+                {title}
+            </p>
+
             <button className='todo__remove' onClick={handleRemove}>
                 <img src={removeIcon} alt="remove todo" />
             </button>

@@ -17,22 +17,31 @@ export const slice = createSlice({
       ...state,
       list,
     }),
-    setTodo: (state, { payload: todo })=>({
-      ...state,
-      list: [
-        ...state.list, {
-          ...todo,
-          id: nextTodoId(state.list)
-        }]
-    }),
+    addTodo: (state, { payload: todo })=>{
+      todo.id = nextTodoId(state.list);
+      return ({
+        ...state,
+        list: [ todo, ...state.list ]
+      })
+    },
+
     removeTodo: (state, { payload: todoId})=>({
       ...state,
       list: state.list.filter( todo=>todo.id!==todoId )
+    }),
+
+    toggleStatus: (state, { payload: todoId})=>({
+      ...state,
+      list: state.list.map( 
+        todo=> todo.id!==todoId 
+        ? todo
+        : ({ ...todo, completed: !todo.completed })
+      )
     })
   },
 });
 
-export const { setTodos, setTodo,removeTodo } = slice.actions;
+export const { setTodos, addTodo,removeTodo, toggleStatus } = slice.actions;
 
 export default slice.reducer;
 

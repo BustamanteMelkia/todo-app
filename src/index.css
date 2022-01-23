@@ -57,10 +57,11 @@ button{
   width: 90%;
   margin: 3rem auto;
 }
-.todos__list{
-  margin: 2rem 0rem;
+.todos__title{
+  color: var(--color-gray);
+  font-size: .9rem;
+  font-weight: 400;
 }
-
 /*Form*/
 .form{
   border: 2px solid var(--bg-secondary);
@@ -69,6 +70,7 @@ button{
   flex-direction: row-reverse;
   align-items: center;
   padding: 9px;
+  margin-bottom: 2rem;
 }
 .form__control{
   flex: 1;
