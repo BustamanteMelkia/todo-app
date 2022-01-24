@@ -1,16 +1,26 @@
 import React from 'react';
+import { usePresence, motion } from 'framer-motion';
+
 import removeIcon from '../../assets/icons/remove.png'
 import { removeTodo, toggleStatus } from '../../todos/infrastructure/todos.presenter';
 
 const TodoListItem = ({todo: { id, title, completed}}) => {
-    const handleStatusToggle = _=>{
-        toggleStatus(id);
-    }
-    const handleRemove = _=>{
-        removeTodo(id)
-    }
+    const [isPresent, safeToRemove] = usePresence();
+
+    const animations = {
+      layout: true,
+      initial: "out",
+      animate: isPresent ? "in" : "out",
+      variants: {
+        in: { scaleY: 1, opacity: 1 },
+        out: { scaleY: 0, opacity: 0, zIndex: -1 }
+      },
+      onAnimationComplete: () => !isPresent && safeToRemove(),
+      transition: { type: "spring", stiffness: 300, damping: 30 }
+    };
+
     return (  
-        <li className='todo' >
+        <motion.li className='todo' {...animations} >
             <div className="todo__check">
 
                 <div className="checkbox">
@@ -18,7 +28,7 @@ const TodoListItem = ({todo: { id, title, completed}}) => {
                         type="checkbox" 
                         className='checkbox__input' 
                         checked={completed} 
-                        onChange={handleStatusToggle}
+                        onChange={()=>toggleStatus(id)}
                         id={`todo-${id}`}
                     />
                     <label className='checkbox__label' htmlFor={`todo-${id}`}></label>
@@ -29,10 +39,10 @@ const TodoListItem = ({todo: { id, title, completed}}) => {
                 {title}
             </p>
 
-            <button className='todo__remove' onClick={handleRemove}>
+            <button className='todo__remove' onClick={()=>removeTodo(id)}>
                 <img src={removeIcon} alt="remove todo" />
             </button>
-        </li>
+        </motion.li>
     );
 }
  

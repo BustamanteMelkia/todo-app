@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatePresence } from 'framer-motion';
 // Components
 import TodoListItem from './TodoListItem';
 // Redux
@@ -11,7 +12,9 @@ const TodoList = () => {
         <>
             <h3 className='todos__title'>Todos - {todos.length}</h3>
             <ul className='todos__list'>
-                {todos.map(todo=> <TodoListItem key={todo.id} todo={todo} />)}
+                <AnimatePresence>
+                    {todos.map(todo=> <TodoListItem key={todo.id}  todo={todo} /> )}
+                </AnimatePresence>
             </ul>
         </>
     );
