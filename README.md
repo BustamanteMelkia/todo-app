@@ -22,7 +22,7 @@ Create a .env file in the root folder. In .env file write
 
 `npm install`
 
-##### Run Snap Shot from the root directory.
+##### Run TodoApp from the root directory.
 
 `npm start`
 
