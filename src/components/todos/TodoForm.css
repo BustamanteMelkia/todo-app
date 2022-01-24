@@ -1,0 +1,58 @@
+.form {
+  border: 2px solid var(--bg-secondary);
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 9px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.form-group {
+  flex: 1;
+  position: relative;
+}
+.form-group--error::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  background-size: cover;
+  background-image: url(https://melkia99.blob.core.windows.net/images/warning.png);
+}
+.form-control {
+  background-color: var(--bg-primary);
+  color: var(--color-gray);
+  border: none;
+  margin-left: 0.5rem;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.form-submit:focus,
+.form-control:focus {
+  outline: none;
+}
+.form-control::placeholder {
+  color: var(--color-gray);
+  font-size: 0.95rem;
+}
+.form-submit {
+  width: 22px;
+  height: 22px;
+  border-radius: 40%;
+  background-color: var(--color-secondary);
+  padding: 5px;
+}
+@media screen and (max-width: 768px) {
+  .form-control,
+  .form-control::placeholder {
+    font-size: 1.1rem;
+  }
+  .form-submit {
+    width: 26px;
+    height: 26px;
+  }
+}

@@ -1,0 +1,64 @@
+/*Todo*/
+.todo {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 0.8rem;
+  background-color: var(--bg-secondary);
+  border-radius: 0.8rem;
+  margin: 1rem 0rem;
+}
+.todo-title {
+  margin-left: 0.5rem;
+  flex: 1;
+  color: var(--color-gray);
+  font-size: 0.85rem;
+}
+.todo-title--completed {
+  text-decoration: line-through;
+}
+.todo-remove {
+  width: 12px;
+  height: 12px;
+  filter: opacity(20%);
+  transition: all 0.4s ease-in-out;
+}
+.todo-remove:hover {
+  filter: opacity(100%);
+}
+/*My custom checkbox*/
+.checkbox{
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+.checkbox-input{
+  visibility: hidden;
+}
+.checkbox-label{
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 40%;
+  border: 3px solid var(--color-secondary);
+}
+.checkbox-input:checked + .checkbox-label{
+  background-color: var(--color-secondary);
+  background-image: url(https://melkia99.blob.core.windows.net/images/checked.png);
+  background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .todo{
+      padding: 1.2rem .8rem;
+    }
+    .todo-title{
+      font-size: 15px;
+    }
+    .checkbox{
+      width: 22px;
+      height: 22px;
+    }
+}
+  

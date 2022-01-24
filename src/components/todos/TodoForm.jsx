@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import addIcon from '../../assets/icons/add.png';
 import {addTodo} from '../../todos/infrastructure/todos.presenter';
+import './TodoForm.css';
 
 const TodoForm = () => {
     const [data, setData] = useState({
@@ -30,17 +30,20 @@ const TodoForm = () => {
     }
     return (
         <form className={`form`} onSubmit={handleSubmit}>
-            <div className={`form__group ${hasError?'form__group--error':''}`}>
+            <div className={`form-group ${hasError?'form-group--error':''}`}>
                 <input 
                     value={title} 
                     name='title'
-                    className='form__control' 
+                    className='form-control' 
                     onChange={handleChange} 
-                    placeholder='Enter a new todo'
+                    placeholder='What needs to be done?'
                 />
             </div>
-            <button type='submit' className='form__submit'>
-                <img src={addIcon} alt="add icon" />
+            <button type='submit' className='form-submit'>
+                <img 
+                    src='https://melkia99.blob.core.windows.net/images/add.png' 
+                    alt="add icon" 
+                />
             </button>
         </form>
     );

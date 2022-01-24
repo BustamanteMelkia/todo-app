@@ -1,8 +1,8 @@
 import React from 'react';
 import { usePresence, motion } from 'framer-motion';
-
-import removeIcon from '../../assets/icons/remove.png'
+import './TodoListItem.css'
 import { removeTodo, toggleStatus } from '../../todos/infrastructure/todos.presenter';
+
 
 const TodoListItem = ({todo: { id, title, completed}}) => {
     const [isPresent, safeToRemove] = usePresence();
@@ -21,26 +21,29 @@ const TodoListItem = ({todo: { id, title, completed}}) => {
 
     return (  
         <motion.li className='todo' {...animations} >
-            <div className="todo__check">
+            <div className="todo-check">
 
                 <div className="checkbox">
                     <input 
                         type="checkbox" 
-                        className='checkbox__input' 
+                        className='checkbox-input' 
                         checked={completed} 
                         onChange={()=>toggleStatus(id)}
                         id={`todo-${id}`}
                     />
-                    <label className='checkbox__label' htmlFor={`todo-${id}`}></label>
+                    <label className='checkbox-label' htmlFor={`todo-${id}`}></label>
                 </div>
 
             </div>
-            <p className={`todo__title ${completed?'todo__title--completed':''}`}>
+            <p className={`todo-title ${completed?'todo-title--completed':''}`}>
                 {title}
             </p>
 
-            <button className='todo__remove' onClick={()=>removeTodo(id)}>
-                <img src={removeIcon} alt="remove todo" />
+            <button className='todo-remove' onClick={()=>removeTodo(id)}>
+                <img 
+                    src='https://melkia99.blob.core.windows.net/images/remove.png' 
+                    alt="remove todo" 
+                />
             </button>
         </motion.li>
     );

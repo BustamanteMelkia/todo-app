@@ -1,0 +1,11 @@
+/*Header*/
+.header {
+  padding: 0.8rem 0rem;
+  background-color: var(--bg-secondary);
+  box-shadow: 1px 20px 20px rgb(0, 0, 0, 8%);
+}
+.header-title {
+  font-weight: 500;
+  letter-spacing: -0.2rem;
+  font-size: 1.6rem;
+}
