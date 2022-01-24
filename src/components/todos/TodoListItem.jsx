@@ -10,7 +10,7 @@ const TodoListItem = ({todo: { id, title, completed}}) => {
         removeTodo(id)
     }
     return (  
-        <li className='todo'>
+        <li className='todo' >
             <div className="todo__check">
 
                 <div className="checkbox">
